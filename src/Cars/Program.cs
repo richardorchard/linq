@@ -13,12 +13,21 @@ namespace Cars
         {
             var cars = ProcessFile("fuel.csv");
 
-            foreach(var car in cars)
+            var query = cars.OrderByDescending(c => c.Combined)
+                        .ThenBy(c => c.Name);
+
+            var result = cars.Any(c => c.Manufacturer == "Ford");
+
+            Console.WriteLine(result);
+
+            foreach(var car in query.Take(10))
             {
-                Console.WriteLine(car.Name);
+                Console.WriteLine($"{car.Name} : {car.Combined}" );
 
             }
 
+            
+            Console.ReadKey();
         }
 
         private static List<Car> ProcessFile(string path)
