@@ -7,9 +7,9 @@ namespace Linq
     class Movie
     {
 
-        public string Title;
-        public float Rating;
-        public int Year;
+        public string Title { get; set; }
+        public float Rating { get; set; }
+        public int Year { get; set; }
 
     }
 }
